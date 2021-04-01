@@ -41,8 +41,7 @@ namespace MVCChat.Controllers
                     user = new User
                     {
                         Name = model.Name,
-                        Password = model.Password,
-                        Role = "user"
+                        Password = model.Password
                     };
                     await _context.Users.AddAsync(user);
                     await _context.SaveChangesAsync();
@@ -71,11 +70,11 @@ namespace MVCChat.Controllers
                 if (user != null)
                 {
                     await Authenticate(user); // аутентификация
-                    return RedirectToAction("Index", "Account");// переадресация на метод Index
+                    return RedirectToAction("Index", "Home");// переадресация на метод Index
                 }
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }
-            return View(model);
+           return Redirect($"/Group/Index");
         }
         public async Task<IActionResult> Logout()
         {

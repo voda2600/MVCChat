@@ -1,0 +1,103 @@
+﻿@using System.Security.Claims
+@model UserInGroups
+@{
+    var users = Model.Users;
+    var group = Model.Group;
+
+}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>@group.Name</title>
+
+</head>
+<body>
+    
+    <h1 align="center">                                                                                                                                                                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Добро пожаловать в @group.Name !</h1>
+    <div >
+        <div>
+            <div style="text-align:left;">
+                Все пользователи чата:
+                @foreach (var i in users)
+                {
+                    @if (User.Claims.SingleOrDefault(p => p.Type == ClaimTypes.NameIdentifier)?.Value == group.AdminId.ToString() && i.Id != group.AdminId)
+                    {
+
+                <div style="text-align:left; color:firebrick;">@i.Name</div>
+
+                        <a asp-controller="Group"
+                           asp-action="Ban"
+                           asp-route-groupId=@group.Id
+                           asp-route-userId=@i.Id>(Ban)</a>
+                    
+                }
+                else
+                {
+                    <div style="text-align:left; color:firebrick;">@i.Name</div>
+                }
+                }
+                </div>
+
+            </div>
+    </div>
+    <div id="chatroom">
+        <div class="page-tape__card">
+            <a class="page-tape__card-link">
+
+                <div class="page-tape__user user-tape">
+                    <div class="user-tape__name">Name</div>
+                    <div class="user-tape__status"><span>Online</span></div>
+                </div>
+                <div class="page-tape__comment">НАдпись текста</div>
+            </a>
+        </div>
+    </div>
+    <div>
+        <div>
+            <textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
+        </div>
+        <input type="submit" id="sendBtn" value="Send Message">
+    </div>
+    <script src="~/js/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script>
+const hubConnection = new signalR.HubConnectionBuilder()
+            .withUrl("/chat")
+            .build();
+
+        let userName = "@User.Identity.Name";
+        // получение сообщения от сервера
+        hubConnection.on('Push', function (userName, message) {
+            var div = document.createElement("div");
+            div.id ="page-tape__card"
+            // создаем элемент <b> для имени пользователя
+            div.innerHTML = "  <a class=\"page - tape__card - link\"> < div class=\"page-tape__user user-tape\" > <div class=\"user-tape__name\">" Name</div>"
+            let userNameElem = document.createElement("b");
+            userNameElem.appendChild(document.createTextNode(userName + ': '));
+
+            // создает элемент <p> для сообщения пользователя
+            let elem = document.createElement("p");
+            elem.appendChild(userNameElem);
+            elem.appendChild(document.createTextNode(message));
+
+            document.getElementById("chatroom").appendChild(elem);
+
+        });
+
+
+
+        // отправка сообщения на сервер
+        document.getElementById("sendBtn").addEventListener("click", function (e) {
+            let message = document.getElementById("message").value;
+            document.getElementById("message").value = "";
+            hubConnection.invoke("Send", userName, message, "@group.Id");
+        });
+
+        async function SetUp(){
+            await hubConnection.start();
+            await hubConnection.invoke("Enter", "@group.Id");
+        }
+        SetUp();
+
+    </script>
+</body>
+</html>

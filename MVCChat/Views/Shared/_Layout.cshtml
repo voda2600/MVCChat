@@ -1,48 +1,131 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MVCChat</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <title>Онлайн чат</title>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="~/css/style.css" type="text/css">
+    <link rel="stylesheet" href="~/css/core.css" type="text/css">
+
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MVCChat</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+
+    <div class="wrapper">
+        
+        <header class="header">
+            <div class="header__container container">
+                <div class="header__row">
+
+                    <img style="width: 5%;" src="~/css/logo.png" />
+
+                    <div class="header__menu">
+                        <div class="header__menu-burger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="header__menu-body"></div>
+                    </div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+
+
+                <h1>
+                    &nbsp;  Welcome, @User.Identity.Name
+                </h1>}
+                    <div class="header__buttons buttons-header" data-da="header__menu-body,2,992">
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+
+
+
+
+
+
+
+                <a asp-controller="Group" asp-action="Create" class="buttons-header__start btn">Создать Chat</a>
+                                <a href="~/Account/Logout" class="buttons-header__login">Выйти</a>}
+                            else
+                            {
+
+                <a asp-controller="Account" asp-action="Login" class="buttons-header__start btn">Войти</a>
+                                <a asp-controller="Account" asp-action="Register" class="buttons-header__login">Зарегистрироваться</a>}
+
+                    </div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+                <form method="get" asp-controller="Group" asp-action="Search" class="form-wrapper">
+                    <input id="query" placeholder="Введите имя чата..." required="" type="text" name="input">
+                    <input value="Search" id="submit" type="submit">
+                </form>
+
+            }
+                </div>
+
+            </div>
+        </header>
+        <main class="page">
+
+            <div class="page__container container">
+                <div class="page-tape">
+
+                    <div class="page-tape__body">
+                        <div class="page-tape__row">
+                            <div class="page-tape__item">
+
+                            </div>
+                            <div class="page-tape__slider page-tape__item">
+                                <div class="owl-carousel">
+
+                                
+
+
+
+
+                                    @RenderBody()
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-content">
+                    <div class="page-content__row">
+
+
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - MVCChat - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+        </main>
+        <footer class="footer" data-sex_age="false">
+            <div class="container">
+                <div class="footer__items items-footer" data-da="header__menu-body,last,420">
+                    <ul class="items-footer__list">
+                                           <!--<li><div>made by <a href="https://devmastery.ru" class="items-footer__link">devmastery</a></div></li>-->
+                    </ul>
+                    <div class="items-footer__copyrighted">
+                        2021 © Ilnur
+                    </div>
+                </div>
+            </div>
+            @RenderSection("Scripts", required: false)
+        </footer>
+
+
+
+
+    </div>
+    <!-- Popup -->
+
+
 </body>
+
 </html>

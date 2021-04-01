@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace MVCChat.Models
 {
-    public class ApplicationContext : DbContext
+    public partial class ApplicationContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-        public DbSet<Group> Roles { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<UserAndGroup> UserAndGroups { get; set; }
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
@@ -18,18 +19,33 @@ namespace MVCChat.Models
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Group>(entity =>
+            {
+                entity.HasIndex(e => e.AdminId, "IX_Groups_AdminId");
 
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(32);
+            });
 
-            // добавляем тестовые роли
-         
-            // добавляем тестовых пользователей
-            User adminUser1 = new User { Id = 1, Name = "admin@mail.com", Password = "123456", Role = "admin" };
-            User adminUser2 = new User { Id = 2, Name = "tom@mail.com", Password = "123456", Role = "admin" };
-            User simpleUser1 = new User { Id = 3, Name = "bob@mail.com", Password = "123456", Role = "user" };
-            User simpleUser2 = new User { Id = 4, Name = "sam@mail.com", Password = "123456", Role = "user" };
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(32);
 
-            modelBuilder.Entity<User>().HasData(new User[] { adminUser1, adminUser2, simpleUser1, simpleUser2 });
-            base.OnModelCreating(modelBuilder);
+            });
+
+            modelBuilder.Entity<UserAndGroup>(entity =>
+            {
+                entity.HasKey(e => new { e.UserId, e.GroupId });
+
+                entity.HasIndex(e => e.GroupId, "IX_UserGroups_GroupId");
+
+            });
+
+            OnModelCreatingPartial(modelBuilder);
         }
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

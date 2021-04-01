@@ -1,0 +1,231 @@
+.form__alert {
+	margin: 15px 0;
+	padding: 30px 15px;
+	display: none;
+	width: 100%;
+}
+
+.form__alert.form__alert-danger {
+	color: #721c24;
+    background-color: #f8d7da;
+}
+
+.form__alert.form__alert-success {
+	color: #155724;
+    background-color: #d4edda;
+}
+
+.ctn-preloader-chat {
+	z-index: 9200;
+}
+/*
+.chat_message_send {
+	cursor: pointer !important;
+}
+*/
+.chat__emoji {
+	width: 20px;
+    height: 20px;
+    background-clip: content-box;
+    -webkit-transition: opacity 0.1s linear, background-color 0.1s ease-in, border-color 0.1s ease-in;
+    -o-transition: opacity 0.1s linear, background-color 0.1s ease-in, border-color 0.1s ease-in;
+    transition: opacity 0.1s linear, background-color 0.1s ease-in, border-color 0.1s ease-in;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.interlocutor-message__image .message-img__vip {
+	filter: blur(0);
+	-webkit-filter: blur(0);
+}
+
+.input-box__overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.1);
+	z-index: 9001;
+}
+
+.chat-page__overlay, .chat-page__overlay-dialog {
+	display: none;
+	z-index: 9001;
+	padding: 15px 10px;
+}
+
+.chat-page__overlay h3, .chat-page__overlay-dialog h3 {
+	display: inline-block;
+	color: #783BF9;
+	margin-right: 30px;
+}
+.chat-page__overlay-btn, .chat-page__overlay-btn-dialog {
+	display: inline-block;
+	font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #ffffff;
+    padding: 10px 30px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 200px;
+}
+
+.vip__crown {
+	display: inline-block;
+	width: 30px;
+	vertical-align: middle;
+	margin-right: 30px;
+}
+
+.vip__crown img {
+	width: 100%;
+}
+.vip__crown span {
+	display: block;
+	padding-left: 3px;
+}
+#popup_vip {
+	z-index: 9900;
+}
+.popup {
+	z-index: 9900;
+}
+
+#vip_buy.vip__price {
+    width: 100%;
+    padding-top: 60px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#vip_buy .card__price {
+	margin: 15px;
+
+}
+
+.header__menu-body {
+	z-index: 9201;
+}
+
+.header__menu-burger {
+	z-index: 9202 !important;
+}
+
+.header__logo {
+	z-index: 9202;
+}
+
+.email__modal {
+	padding: 30px;
+	padding-top: 60px;
+}
+.email__modal h4 {
+
+	line-height: 30px;
+	font-size: 22px;
+
+}
+.email__modal input {
+	border: none;
+	border-bottom: 2px solid #eaeaea;
+}
+
+.email__modal input:focus {
+	border: none;
+	border-bottom: 2px solid #292d32;
+	outline: none;
+}
+
+.email__btn {
+	margin-top: 30px;
+	border: 1px solid #eaeaea;
+    border-radius: 10px;
+    height: 40px;
+    text-align: center;
+    color: #292d32;
+    padding: 10px 30px;
+    margin-left: 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.email__btn:hover {
+	background-color: #e0e0e0;
+    -webkit-box-shadow: 0 0 10px #e0e0e0;
+    box-shadow: 0 0 10px #e0e0e0;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.pagination {
+	display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem;
+    justify-content: center;
+}
+
+.pagination li {
+	margin: 0 5px;
+}
+
+.pagination a {
+	position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #292d32;
+    background-color: #FAFAFA;
+}
+
+
+.pagination li.active a {
+	background-color: #783BF9;
+	color: #fff;
+}
+
+.pagination li.disabled a {
+	cursor: default;
+}
+
+.grecaptcha-badge {
+	display: none !important;
+}
+
+/*
+.email__modal input::-webkit-input-placeholder {
+    color: #999;
+}
+.email__modal input:focus::-webkit-input-placeholder {
+    color: red;
+}
+
+.email__modal input:-moz-placeholder {
+    color: #999;
+}
+.email__modal input:focus:-moz-placeholder {
+    color: red;
+}
+
+.email__modal input::-moz-placeholder {
+    color: #999;
+}
+.email__modal input:focus::-moz-placeholder {
+    color: red;
+}
+
+.email__modal input:-ms-input-placeholder {
+    color: #999;
+}
+.email__modal input:focus:-ms-input-placeholder {
+    color: red;
+}
+*/

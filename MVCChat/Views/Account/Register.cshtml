@@ -1,26 +1,25 @@
-﻿<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-</head>
-<body>
-    <form asp-controller="Account" asp-action="Register" method="post">
-        <div>
-            <input type="text" name="Name" id="name" value="" placeholder="Name">
+﻿<form asp-controller="Account" asp-action="Register" method="post">
+    <div class="forms">
+        <div class="email__block">
+            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            <input type="text" placeholder="Name" class="email input-reg" name="Name">
         </div>
-        <br>
-        <div>
-            <input type="password" name="Password" id="name" value="" placeholder="Password">
+        <div class="password__block">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+            <input type="password" placeholder="password" class="password input-reg" name="Password">
         </div>
-        <br>
-        <div>
-            <input type="password" name="ConfirmPassword" id="name" value="" placeholder="Confirm Password">
+        <div class="password__block">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+            <input type="password" placeholder="confirm password" class="password input-reg" name="ConfirmPassword">
         </div>
-        <br>
-        <input type="submit" value="Register">
-    </form>
+        <div class="form__alert"></div>
+        <div>
+            <button class="btn__reg a_register" type="submit" value="Register">зарегистрироваться</button>
+        </div>
+    </div>
+    
+    
+    
+    
 
-
-
-</body>
-</html>
+</form>

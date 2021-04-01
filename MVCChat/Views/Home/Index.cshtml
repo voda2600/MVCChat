@@ -1,8 +1,32 @@
-﻿@{
+﻿@model List<Group>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@if (User.Identity.IsAuthenticated)
+{
+    
+    <ul class="alt">
+        @foreach (var i in Model)
+        {
+            <li>
+                <b>@i.Name</b>
+                <a asp-controller="Group" asp-action="Index" asp-route-id=@i.Id class="buttons-header__start btn">
+                    Enter
+                </a>
+                <br />
+                <br />
+                <br />
+            </li>
+
+
+        }
+    </ul>
+}
+else
+{
+    <br>
+    <h2>Войдите или зарегистрируйтесь</h2>
+    <br>
+    
+}

@@ -1,0 +1,22 @@
+﻿@model Dictionary<Group, bool>
+@{ 
+ 
+}
+<div>
+    <h4>Группы: </h4>
+    <ul>
+        @foreach (var (group, enter) in Model)
+        {
+            @if (enter)
+            {
+                <li>@group.Name</li>
+            }
+            else
+            {
+                <li>
+                    @group.Name <a  class="buttons-header__start btn" asp-controller="Group" asp-action="Join" asp-route-id=@group.Id asp-route-input=@group.Name> Enter!</a>
+            </li>
+        }
+        }
+    </ul>
+</div>

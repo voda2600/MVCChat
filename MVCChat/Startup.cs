@@ -28,6 +28,7 @@ namespace MVCChat
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
             string connection = "Server = (localdb)\\MSSQLLocalDB;Initial Catalog=MyData2;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -37,7 +38,7 @@ namespace MVCChat
                     options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
                 });
             services.AddSignalR();
-            services.AddControllersWithViews();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,7 +66,7 @@ namespace MVCChat
             {
                 endpoints.MapControllerRoute(
                      name: "default",
-                     pattern: "{controller=Account}/{action=Index}");
+                     pattern: "{controller=Home}/{action=Index}");
                 endpoints.MapHub<ChatHub>("/chat");
             });
         }

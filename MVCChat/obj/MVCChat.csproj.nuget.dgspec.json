@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Lesson\\MVCChat\\MVCChat.csproj": {}
+    "C:\\Users\\voda2\\Desktop\\.Net\\MVCChat\\MVCChat\\MVCChat.csproj": {}
   },
   "projects": {
-    "C:\\Lesson\\MVCChat\\MVCChat.csproj": {
+    "C:\\Users\\voda2\\Desktop\\.Net\\MVCChat\\MVCChat\\MVCChat.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Lesson\\MVCChat\\MVCChat.csproj",
+        "projectUniqueName": "C:\\Users\\voda2\\Desktop\\.Net\\MVCChat\\MVCChat\\MVCChat.csproj",
         "projectName": "MVCChat",
-        "projectPath": "C:\\Lesson\\MVCChat\\MVCChat.csproj",
+        "projectPath": "C:\\Users\\voda2\\Desktop\\.Net\\MVCChat\\MVCChat\\MVCChat.csproj",
         "packagesPath": "C:\\Users\\voda2\\.nuget\\packages\\",
-        "outputPath": "C:\\Lesson\\MVCChat\\obj\\",
+        "outputPath": "C:\\Users\\voda2\\Desktop\\.Net\\MVCChat\\MVCChat\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\voda2\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,6 +45,20 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.12, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.5, )"
             }
           },
           "imports": [
